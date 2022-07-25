@@ -1,0 +1,26 @@
+• A business has two types of users: staff and clients. 
+    Staff members can perform actions to help run the business while clients interact with the business by buying products and services. 
+    The two types of users aren't completely different however, they both have logins and profiles. 
+    
+    Describe in words (no source code) what classes you'd create to model users for this business and any relationships between classes 
+    (no need for properties or methods).
+
+================================================================================================================================================
+
+Answer:
+
+
+I believe that there are different ways for this situation, which may change according to the business rules.
+At first I can imagine 2 possible solutions.
+In both solutions the users are stored in a common "users" table, with a flag indicating whether this user is "staff" or "client",
+in addition to a flag indicating if you are a "superuser", which cannot be removed via the application.
+
+# 1. Solutions with fixed profiles and permissions, such as Administrators, Manager Supervisors, etc.
+- For this solution, I would work with the relationship of 2 tables in the database (Permissions and Users), and then I would control through
+    middleware layered application.
+
+# 2. Per-User Permission Solutions.
+- This is a more complex solution but offers more flexibility. Imagining that the system is based on modules, a user can create profiles and
+    ask for module licenses.
+    For this, in addition to the "profiles" and "users" tables, there would be a table to list the system "modules" in addition to a user table
+    "profile_module" where the application would make a query through a middleware.
